@@ -19,6 +19,8 @@ function Home() {
     <div>
       <Head>
         <title>Gym Timer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta charset="utf-8"/>
       </Head>
       <Provider store={store}>
         <div className="flex fixed top-0 left-0 right-0 bottom-0 items-center justify-center">
