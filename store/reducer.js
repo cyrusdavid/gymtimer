@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
-import moment from 'moment'
-import { RESET_TIME, SET_TIME, DECREMENT_TIME, SET_DURATION, SHOW_SETTINGS } from './constants'
+import { RESET_TIME, SET_TIME, DECREMENT_TIME, SET_DURATION } from './constants'
 
 function timeReducer(state = 0, action) {
   switch (action.type) {
@@ -22,7 +21,7 @@ function durationsReducer(state = initialDurations, action) {
     case SET_DURATION: {
       const { index, duration } = action.payload
       const durations = [...state]
-      durations.splice(index, 1, moment.duration(duration.format('00:mm:ss')).asSeconds())
+      durations.splice(index, 1, duration)
 
       return durations
     }
