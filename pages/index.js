@@ -8,6 +8,7 @@ import createStore from '../store/create-store'
 import Reset from '../components/reset'
 import SettingsPane from '../components/settings-pane'
 import DurationList from '../components/duration-list'
+import '../css/style.css'
 
 momentDurationFormatSetup(moment)
 
@@ -17,7 +18,6 @@ function Home() {
   return (
     <div>
       <Head>
-        <link rel="stylesheet" href="/static/style.css"/>
         <title>Gym Timer</title>
       </Head>
       <Provider store={store}>
