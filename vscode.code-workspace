@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.formatOnSave": true,
+		"xo.enable": true,
+		"editor.defaultFormatter": "samverschueren.linter-xo",
+		"[javascript]": {
+			"editor.defaultFormatter": "samverschueren.linter-xo"
+		},
+		"xo.format.enable": true
+	}
+}

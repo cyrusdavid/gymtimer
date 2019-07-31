@@ -1,0 +1,29 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "rc-time-picker/assets/index.css";
+
+
+.w-app {
+    width: 600px;
+}
+
+.w-half {
+    width: 50%;
+}
+
+.time {
+    @apply text-3xl text-center py-4 font-light;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.settingsPane {
+    @apply absolute top-0 left-0 right-0 bottom-0 flex flex-col bg-white;
+    transition: .2s;
+}
+
+.settingsPane-hidden {
+    transform: translateY(100%);
+    opacity: 0;
+}

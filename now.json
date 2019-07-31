@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "gymtimer",
+  "alias": "gymtimer.now.sh",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    },
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ]
+}
