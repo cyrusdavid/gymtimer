@@ -1,9 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
 import Duration from './duration'
 
-function DurationList({ durations }) {
+function DurationList() {
+  const durations = useSelector(({ durations }) => durations)
   return (
     <>
       {durations.map(duration => (
@@ -13,10 +13,4 @@ function DurationList({ durations }) {
   )
 }
 
-DurationList.propTypes = {
-  durations: PropTypes.arrayOf(PropTypes.number).isRequired
-}
-
-const mapStateToProps = ({ durations }) => ({ durations })
-
-export default connect(mapStateToProps)(DurationList)
+export default DurationList

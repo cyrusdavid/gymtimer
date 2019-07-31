@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import { useSelector, useDispatch } from 'react-redux'
 import moment from 'moment'
 import TimePicker from 'rc-time-picker'
 import { setDuration } from '../store/actions'
 
-function SettingsPane({ durations, setDuration }) {
+function SettingsPane() {
   const [isSettingsShown, hideOrShowSettings] = useState(false)
+  const dispatch = useDispatch()
+  const onChange = index => t => {
+    dispatch(setDuration(moment.duration(t.format('00:mm:ss')).asSeconds(), index))
+  }
+
+  const durations = useSelector(({ durations }) => durations)
   const onClickBtnHide = () => hideOrShowSettings(false)
   const onClickBtnShow = () => hideOrShowSettings(true)
+
   return (
     <>
       <div className="text-center py-2">
@@ -25,9 +31,7 @@ function SettingsPane({ durations, setDuration }) {
                   value={moment(moment.duration(duration * 1000).format('mm:ss'), 'mm:ss')}
                   showHour={false}
                   allowEmpty={false}
-                  onChange={t => {
-                    setDuration(moment.duration(t.format('00:mm:ss')).asSeconds(), index)
-                  }}
+                  onChange={onChange(index)}
                 />
               </div>
             ))}
@@ -41,15 +45,4 @@ function SettingsPane({ durations, setDuration }) {
   )
 }
 
-SettingsPane.propTypes = {
-  durations: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setDuration: PropTypes.func.isRequired
-}
-
-const mapStateToProps = ({ durations }) => ({ durations })
-
-const mapDispatchToProps = dispatch => ({
-  setDuration: (duration, index) => dispatch(setDuration(duration, index))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsPane)
+export default SettingsPane

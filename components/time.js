@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import moment from 'moment'
 
-function Time({ time }) {
+function Time() {
+  const time = useSelector(({ time }) => time)
   return (
     <div className="time font-normal">{moment.duration(time * 1000).format('mm:ss', {
       trim: false
@@ -12,12 +12,4 @@ function Time({ time }) {
   )
 }
 
-Time.propTypes = {
-  time: PropTypes.number.isRequired
-}
-
-const mapStateToProps = ({ time }) => ({
-  time
-})
-
-export default connect(mapStateToProps)(Time)
+export default Time
