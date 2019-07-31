@@ -28,7 +28,7 @@ function SettingsPane() {
               <div key={duration} className="w-half text-center my-4">
                 <TimePicker
                   format="mm:ss"
-                  value={moment(moment.duration(duration * 1000).format('mm:ss'), 'mm:ss')}
+                  value={moment(moment.duration(duration * 1000).format('mm:ss', { trim: false }), 'mm:ss')}
                   showHour={false}
                   allowEmpty={false}
                   onChange={onChange(index)}
