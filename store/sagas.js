@@ -2,11 +2,7 @@ import { delay, put, takeLatest } from 'redux-saga/effects'
 import { SET_TIME, DECREMENT_TIME } from './constants'
 
 function * decrementTime(action) {
-  if (!(action.payload > 0)) {
-    return
-  }
-
-  while (true) {
+  for (let i = action.payload; i > 0; i--) {
     yield delay(1000)
     yield put({ type: DECREMENT_TIME })
   }

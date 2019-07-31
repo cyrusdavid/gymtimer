@@ -9,6 +9,7 @@ import Reset from '../components/reset'
 import SettingsPane from '../components/settings-pane'
 import DurationList from '../components/duration-list'
 import '../css/style.css'
+import Welcome from '../components/welcome'
 
 momentDurationFormatSetup(moment)
 
@@ -31,6 +32,7 @@ function Home() {
               <Reset/>
             </div>
             <SettingsPane/>
+            <Welcome/>
           </div>
         </div>
       </Provider>

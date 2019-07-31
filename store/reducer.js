@@ -14,7 +14,7 @@ function timeReducer(state = 0, action) {
   }
 }
 
-const initialDurations = [30, 60, 120, 180, 300]
+const initialDurations = [5, 60, 120, 180, 300]
 
 function durationsReducer(state = initialDurations, action) {
   switch (action.type) {
