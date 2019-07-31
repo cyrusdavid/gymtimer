@@ -17,4 +17,4 @@ function Duration({ duration }) {
 Duration.propTypes = {
   duration: PropTypes.number.isRequired
 }
-export default Duration
+export default React.memo(Duration)
