@@ -20,7 +20,7 @@ function SettingsPane() {
       <div className="text-center py-2">
         <button type="button" className="uppercase text-sm border-b" onClick={onClickBtnShow}>Settings</button>
       </div>
-      <div className={`settingsPane ${isSettingsShown ? '' : 'settingsPane-hidden'}`}>
+      <div className={`settingsPane ${isSettingsShown && 'settingsPane-visible'}`}>
         <div className="border flex-1">
           <h2 className="uppercase text-lg text-center my-2">Settings</h2>
           <div className="flex flex-wrap">
