@@ -10,9 +10,9 @@ function Welcome() {
   }
 
   return (
-    <div className={`settingsPane flex justify-center text-center ${isOpen || 'settingsPane-hidden'}`} onClick={onClick}>
-      <span className="select-none text-4xl mb-6">Gym Timer</span>
-      <span className="select-none text-sm font-light">Click anywhere to continue</span>
+    <div className={`settingsPane select-none flex justify-center text-center ${isOpen || 'settingsPane-hidden'}`} onClick={onClick}>
+      <span className="text-4xl mb-6">Gym Timer</span>
+      <span className="text-sm font-light">Click anywhere to continue</span>
     </div>
   )
 }
