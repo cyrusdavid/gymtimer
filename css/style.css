@@ -21,6 +21,7 @@
 .settingsPane {
     @apply absolute top-0 left-0 right-0 bottom-0 flex flex-col bg-white;
     transition: .2s;
+    will-change: transform, opacity;
 }
 
 .settingsPane-hidden {
