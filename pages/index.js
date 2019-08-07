@@ -24,9 +24,8 @@ class Home extends React.Component {
 
   componentDidMount() {
     const storage = new Storage()
-    console.log(storage.get('durations'))
     const store = createStore({
-      durations: storage.get('durations')
+      durations: storage.get('durations') || void 0
     })
     this.setState({
       store
