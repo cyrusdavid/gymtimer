@@ -1,6 +1,9 @@
 import { delay, put, takeLatest, select, takeEvery, call } from 'redux-saga/effects'
 import { shortSound, longSound } from '../sound'
-import { SET_TIME, DECREMENT_TIME } from './constants'
+import { SET_TIME, DECREMENT_TIME, SET_DURATION } from './constants'
+import Storage from './storage-local'
+
+const storage = new Storage()
 
 function * playSound() {
   const time = yield select(({ time }) => time)
@@ -19,9 +22,18 @@ function * decrementTime(action) {
   }
 }
 
+function * updateStorage(action) {
+  const state = yield select(({ durations }) => durations)
+  const { index, duration } = action.payload
+  const durations = [...state]
+  durations.splice(index, 1, duration)
+  yield call([storage, 'set'], 'durations', durations)
+}
+
 function * saga() {
   yield takeLatest(SET_TIME, decrementTime)
   yield takeEvery(DECREMENT_TIME, playSound)
+  yield takeEvery(SET_DURATION, updateStorage)
 }
 
 export default saga

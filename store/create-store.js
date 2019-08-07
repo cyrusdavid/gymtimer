@@ -3,9 +3,9 @@ import createSagaMiddleware from 'redux-saga'
 import sagas from './sagas'
 import reducer from './reducer'
 
-function createStore() {
+function createStore(preloadedState) {
   const sagaMiddleware = createSagaMiddleware()
-  const store = createReduxStore(reducer, applyMiddleware(sagaMiddleware))
+  const store = createReduxStore(reducer, preloadedState, applyMiddleware(sagaMiddleware))
 
   sagaMiddleware.run(sagas)
 
