@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "gymtimer",
-  "alias": "gymtimer.now.sh",
+  "alias": ["gymtimer.now.sh", "gymtimer.ga"],
   "builds": [
     {
       "src": "package.json",
