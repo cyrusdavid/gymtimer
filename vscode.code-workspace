@@ -11,6 +11,7 @@
 		"[javascript]": {
 			"editor.defaultFormatter": "samverschueren.linter-xo"
 		},
-		"xo.format.enable": true
+		"xo.format.enable": true,
+		"eslint.enable": false
 	}
 }
