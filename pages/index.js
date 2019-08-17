@@ -18,6 +18,7 @@ const Home = () => {
         <link rel="manifest" href="/static/manifest.json"/>
         <meta name="theme-color" content="#FFFFFF"/>
         <link rel="apple-touch-icon" href="/static/icon-512.png"/>
+        <link rel="icon" type="image/png" href="/static/icon-192.png"/>
         <meta charset="utf-8"/>
       </Head>
       <App/>
