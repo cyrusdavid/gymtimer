@@ -11,7 +11,7 @@ function Duration({ duration }) {
   const dispatch = useDispatch()
   const onClick = () => dispatch(setTime(moment.duration(duration * 1000).asSeconds()))
 
-  return <button type="button" className="border w-half time cursor-pointer hover:bg-red-500 hover:text-white" onClick={onClick}>{moment.duration(duration * 1000).format('mm:ss', { trim: false })}</button>
+  return <button type="button" className="border md:w-half time cursor-pointer hover:bg-red-500 hover:text-white" onClick={onClick}>{moment.duration(duration * 1000).format('mm:ss', { trim: false })}</button>
 }
 
 Duration.propTypes = {
