@@ -14,8 +14,8 @@ const reduxStore = createStore(store(STORE_KEY))
 function App() {
   return (
     <Provider store={reduxStore}>
-      <div className="flex fixed top-0 left-0 right-0 bottom-0 items-center justify-center">
-        <div className="h-full md:h-auto flex flex-col w-app relative overflow-hidden p-2">
+      <div className="flex items-center justify-center">
+        <div className="h-full md:h-auto mx-auto flex flex-col w-app relative overflow-hidden p-2">
           <div className="duration-list flex-1 md:flex md:flex-wrap md:flex-none">
             <Time/>
             <DurationList/>
