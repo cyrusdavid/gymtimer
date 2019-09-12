@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"howler": "^2.1.2",
-		"nosleep.js": "^0.9.0",
+		"nosleep.js": "https://github.com/ViRPo/NoSleep.js#f7a6122f5d6700f18a68bff2c4114b81fdf6fa55",
 		"postcss-import": "^12.0.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.9.0",
