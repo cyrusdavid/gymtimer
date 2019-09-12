@@ -1,12 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import NoSleep from 'nosleep.js'
 import 'tailwindcss/base.css'
 import './css/styles.css'
 import 'tailwindcss/utilities.css'
 import App from './components/app'
 import * as serviceWorker from './serviceWorker'
 
+const noSleep = new NoSleep()
 const durations = [30, 60, 90, 120, 180]
+
+document.addEventListener('click', function enableNoSleep() {
+	document.removeEventListener('click', enableNoSleep, false)
+	noSleep.enable()
+}, false)
 
 ReactDOM.render(<App durations={durations}/>, document.querySelector('#root'))
 
