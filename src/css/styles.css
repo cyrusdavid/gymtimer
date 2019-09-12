@@ -1,0 +1,36 @@
+@import "tailwindcss/components";
+
+html, body, #root {
+	@apply h-full font-thin;
+}
+
+.grid {
+	display: grid;
+	grid-template: 2fr repeat(3, 1fr) / 1fr 1fr;
+	grid-gap: 1px;
+}
+
+@screen lg {
+	.grid {
+		width: 600px;
+		max-height: 70%;
+	}
+}
+
+.duration, .time {
+	font-variant-numeric: tabular-nums;
+}
+
+.time {
+	@apply text-6xl text-center select-none m-auto;
+	grid-column: 1 / span 2;
+}
+
+.duration {
+	@apply text-4xl flex items-center justify-center cursor-pointer font-thin;
+	box-shadow:0 0 0 1px var(--color-gray-200);
+}
+
+.duration:hover {
+	@apply bg-red-400 text-white;
+}

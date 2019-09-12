@@ -1,0 +1,11 @@
+{
+	"xo.enable": true,
+	"xo.format.enable": true,
+	"prettier.bracketSpacing": false,
+	"editor.defaultFormatter": "samverschueren.linter-xo",
+	"files.insertFinalNewline": true,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"editor.renderWhitespace": "all",
+	"editor.formatOnSave": true
+}
