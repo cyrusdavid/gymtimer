@@ -3,6 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@types/howler": "^2.1.1",
+		"@types/jest": "^24.0.18",
+		"@types/node": "^12.7.5",
+		"@types/react": "^16.9.2",
+		"@types/react-dom": "^16.9.0",
 		"howler": "^2.1.2",
 		"nosleep.js": "https://github.com/ViRPo/NoSleep.js#f7a6122f5d6700f18a68bff2c4114b81fdf6fa55",
 		"postcss-import": "^12.0.1",
@@ -11,6 +16,7 @@
 		"react-dom": "^16.9.0",
 		"react-scripts": "3.1.1",
 		"tailwindcss": "^1.1.2",
+		"typescript": "^3.6.3",
 		"xo": "https://github.com/xojs/xo#ee145cb"
 	},
 	"scripts": {
@@ -36,7 +42,10 @@
 	},
 	"devDependencies": {
 		"@rescripts/cli": "^0.0.12",
+		"@typescript-eslint/eslint-plugin": "^2.2.0",
+		"@typescript-eslint/parser": "^2.2.0",
 		"eslint-config-xo-react": "^0.20.0",
+		"eslint-config-xo-typescript": "^0.18.0",
 		"eslint-plugin-react": "^7.14.3",
 		"eslint-plugin-react-hooks": "^2.0.1",
 		"postcss-css-variables": "^0.13.0",
@@ -44,7 +53,7 @@
 		"tailwind-css-variables": "^2.0.3"
 	},
 	"xo": {
-		"extends": "xo-react",
+		"extends": ["xo-react", "xo-typescript"],
 		"semicolon": false,
 		"rules": {
 			"import/no-unassigned-import": [
@@ -55,10 +64,16 @@
 						"tailwindcss/*.css"
 					]
 				}
-			]
+			],
+			"@typescript-eslint/semi": ["error", "never"],
+			"radix": ["error", "as-needed"],
+			"react/prop-types": [0]
 		},
 		"env": [
 			"browser"
+		],
+		"extensions": [
+			"ts", "tsx"
 		]
 	}
 }

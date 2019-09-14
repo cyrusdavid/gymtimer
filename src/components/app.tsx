@@ -1,10 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {Howl} from 'howler'
-import PropTypes from 'prop-types'
 import {formatSeconds} from '../utils'
 import Duration from './duration'
 
-function App({durations}) {
+const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
 	const [time, setTime] = useState(0)
 
 	useEffect(() => {
@@ -43,10 +42,6 @@ function App({durations}) {
 			</div>
 		</div>
 	)
-}
-
-App.propTypes = {
-	durations: PropTypes.arrayOf(PropTypes.number).isRequired
 }
 
 export default App
