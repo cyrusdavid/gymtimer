@@ -1,44 +1,62 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useReducer, useEffect} from 'react'
 import {Howl} from 'howler'
 import {formatSeconds} from '../utils'
 import Duration from './duration'
 
+const shortBeep = new Howl({
+	src: '/audio/short.mp3'
+})
+const longBeep = new Howl({
+	src: '/audio/long.mp3'
+})
+let timeout: NodeJS.Timeout
+
 const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
-	const [time, setTime] = useState(0)
+	const reducer: React.Reducer<{time: number}, {type: string; time?: number}> = (state, action) => {
+		switch (action.type) {
+			case 'SET_TIME':
+				clearTimeout(timeout)
+				return {time: action.time || 0}
+			case 'DECREMENT': {
+				const newTime = state.time - 1
+				if (newTime === 0) {
+					longBeep.play()
+				} else if (newTime < 4) {
+					shortBeep.play()
+				}
+
+				return {time: newTime}
+			}
+
+			default:
+				throw new Error('Oops!')
+		}
+	}
+
+	const [state, dispatch] = useReducer(reducer, {time: 0})
+	const {time} = state
 
 	useEffect(() => {
 		if (time) {
-			setTimeout(() => setTime(t => t - 1), 1000)
+			timeout = setTimeout(() => dispatch({type: 'DECREMENT'}), 1000)
 		}
 	}, [time])
-
-	const shortBeep = new Howl({
-		src: '/audio/short.mp3'
-	})
-	const longBeep = new Howl({
-		src: '/audio/long.mp3'
-	})
-
-	const firstRender = useRef(true)
-	useEffect(() => {
-		if (firstRender.current) {
-			firstRender.current = false
-			return
-		}
-
-		if (time === 0) {
-			longBeep.play()
-		} else if (time < 4) {
-			shortBeep.play()
-		}
-	})
 
 	return (
 		<div className="p-2 h-full lg:flex lg:items-center">
 			<div className="border border-gray-200 h-full mx-auto grid">
 				<div className="time">{formatSeconds(time)}</div>
-				{durations.map(duration => <Duration key={duration} duration={duration} setTime={setTime}/>)}
-				<div className="duration">Reset</div>
+				{durations.map(duration => (
+					<Duration key={duration} duration={duration} onClick={() => {
+						dispatch({type: 'SET_TIME', time: duration})
+					}}/>
+				))}
+				<Duration onClick={() => {
+					dispatch({type: 'SET_TIME', time: 0})
+				}}
+				>
+					Reset
+				</Duration>
 			</div>
 		</div>
 	)
