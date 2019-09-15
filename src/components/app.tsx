@@ -48,7 +48,7 @@ const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
 	}, [time])
 
 	return (
-		<div className="p-2 h-full lg:flex lg:items-center">
+		<div className="p-2 pb-6 h-full lg:flex lg:items-center relative">
 			<div className="border border-gray-200 h-full mx-auto grid">
 				<div className="time">{formatSeconds(time)}</div>
 				{durations.map(duration => (
@@ -63,6 +63,7 @@ const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
 					Reset
 				</Duration>
 			</div>
+			<span className="absolute bottom-0 w-full text-center text-gray-500">v1.0.0</span>
 		</div>
 	)
 }
