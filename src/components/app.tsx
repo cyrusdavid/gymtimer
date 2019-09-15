@@ -1,5 +1,6 @@
 import React, {useReducer, useEffect} from 'react'
 import {Howl} from 'howler'
+import * as audioContextTimers from 'audio-context-timers'
 import {formatSeconds} from '../utils'
 import Duration from './duration'
 
@@ -9,15 +10,19 @@ const shortBeep = new Howl({
 const longBeep = new Howl({
 	src: '/audio/long.mp3'
 })
-let timeout: NodeJS.Timeout
+enum actions {
+	SET_TIME = 'SET_TIME',
+	DECREMENT = 'DECREMENT'
+}
+let timeout: number
 
 const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
 	const reducer: React.Reducer<{time: number}, {type: string; time?: number}> = (state, action) => {
 		switch (action.type) {
-			case 'SET_TIME':
-				clearTimeout(timeout)
+			case actions.SET_TIME:
+				audioContextTimers.clearTimeout(timeout)
 				return {time: action.time || 0}
-			case 'DECREMENT': {
+			case actions.DECREMENT: {
 				const newTime = state.time - 1
 				if (newTime === 0) {
 					longBeep.play()
@@ -38,7 +43,7 @@ const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
 
 	useEffect(() => {
 		if (time) {
-			timeout = setTimeout(() => dispatch({type: 'DECREMENT'}), 1000)
+			timeout = audioContextTimers.setTimeout(() => dispatch({type: actions.DECREMENT}), 1000)
 		}
 	}, [time])
 
@@ -48,11 +53,11 @@ const App: React.FunctionComponent<{durations: number[]}> = ({durations}) => {
 				<div className="time">{formatSeconds(time)}</div>
 				{durations.map(duration => (
 					<Duration key={duration} duration={duration} onClick={() => {
-						dispatch({type: 'SET_TIME', time: duration})
+						dispatch({type: actions.SET_TIME, time: duration})
 					}}/>
 				))}
 				<Duration onClick={() => {
-					dispatch({type: 'SET_TIME', time: 0})
+					dispatch({type: actions.SET_TIME, time: 0})
 				}}
 				>
 					Reset

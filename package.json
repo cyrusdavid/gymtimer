@@ -8,6 +8,7 @@
 		"@types/node": "^12.7.5",
 		"@types/react": "^16.9.2",
 		"@types/react-dom": "^16.9.0",
+		"audio-context-timers": "^4.0.54",
 		"howler": "^2.1.2",
 		"nosleep.js": "https://github.com/ViRPo/NoSleep.js#f7a6122f5d6700f18a68bff2c4114b81fdf6fa55",
 		"postcss-import": "^12.0.1",
@@ -53,7 +54,10 @@
 		"tailwind-css-variables": "^2.0.3"
 	},
 	"xo": {
-		"extends": ["xo-react", "xo-typescript"],
+		"extends": [
+			"xo-react",
+			"xo-typescript"
+		],
 		"semicolon": false,
 		"rules": {
 			"import/no-unassigned-import": [
@@ -65,15 +69,24 @@
 					]
 				}
 			],
-			"@typescript-eslint/semi": ["error", "never"],
-			"radix": ["error", "as-needed"],
-			"react/prop-types": [0]
+			"@typescript-eslint/semi": [
+				"error",
+				"never"
+			],
+			"radix": [
+				"error",
+				"as-needed"
+			],
+			"react/prop-types": [
+				0
+			]
 		},
 		"env": [
 			"browser"
 		],
 		"extensions": [
-			"ts", "tsx"
+			"ts",
+			"tsx"
 		]
 	}
 }
